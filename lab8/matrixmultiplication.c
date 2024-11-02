@@ -1,57 +1,56 @@
-#include<stdio.h>
-int main()
-{
-	int r1,c1,r2,c2;
-	printf("Enter the number of rows or columns of matrix1 : ");
-	scanf("%d %d",&r1,&c1);
-	printf("Enter the number of rows or columns of matrix2 : ");
-	scanf("%d %d",&r2,&c2);
-	if(c1!=r2)
-	{
-		printf("Multiplication is impossible");
-		return 0;
-	}
-	int mat1[r1][c1];
-	printf("Enter the elements of matrix 1 :");
-	int i,j,k;
-	for(i=0;i<r1;i++)
-	{
-		for(j=0;j<c1;j++)
-		{
-		   scanf("%d",&mat1[i][j]);
-		}
-	}
-	int mat2[r2][c2];
-	printf("Enter the elements of matrix 2 :");
-	for(i=0;i<r2;i++)
-	{
-		for(j=0;j<c2;j++)
-		{
-		   scanf("%d",&mat2[i][j]);
-	    }
-	}
-	int result[r1][c2];
-	for (i=0;i<r1;i++)
-	{
-		for(j=0;j<c2;j++)
-		{
-			result[i][j]=0;
-			for(k=0;k<r2;k++)
-			{
-				result[i][j]+=mat1[i][k]*mat2[k][j];
-			}
-		}
-	}
-	printf("\nRESULT:\n")
-	for(i=0;i<r1;i++)
-	{
-		for(j=0;j<c2;j++)
-		{
-		   printf("%d ",result[i][j]);
-		}
-		printf("\n");
-	}
+#include <stdio.h>
 
+int main() {
+    int matrixA[3][3];
+    int matrixB[3][3];
+    int result[3][3];
+    int subtractedResult[3][3];
+    int i = 0, j = 0, k = 0;
 
-	
+    printf("Enter elements of Matrix A (3x3):\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            scanf("%d", &matrixA[i][j]);
+        }
+    }
+
+    printf("Enter elements of Matrix B (3x3):\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            scanf("%d", &matrixB[i][j]);
+        }
+    }
+
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            result[i][j] = 0;
+            for (k = 0; k < 3; k++) {
+                result[i][j] += matrixA[i][k] * matrixB[k][j];
+            }
+        }
+    }
+
+    printf("Resultant Matrix (A * B):\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%d ", result[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            subtractedResult[i][j] = matrixA[i][j] - result[i][j];
+        }
+    }
+
+    printf("\nMatrix A - Resultant Matrix:\n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            printf("%d ", subtractedResult[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
 }
